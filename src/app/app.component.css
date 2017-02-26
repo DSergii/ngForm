@@ -1,0 +1,50 @@
+.mat-tab-body{
+	padding: 20px 0;
+}
+
+.hold-form {
+	width: 500px;
+	height: 400px;
+	margin: auto;
+	box-shadow: 1px 1px 10px rgba(0,0,0,0.5);
+	padding: 50px 25px;
+	box-sizing: border-box;
+	position: relative;
+	color: #13a3f7;
+}
+
+.hold-form.login {
+	height: 300px;
+}
+
+h2 {
+	text-align: center;
+	margin: 0 0 10px;
+}
+
+.mat-input-container {
+	width: 100%;
+}
+
+.hold-checkbox {
+	overflow: hidden;
+	width: 100%;
+	margin: 10px 0;
+}
+
+.hold-button {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	text-align: center;
+    padding: 20px 0;
+}
+
+.hold-button button {
+	width: 50%;
+}
+
+input.ng-invalid {
+	
+}

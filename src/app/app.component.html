@@ -1,3 +1,46 @@
-<h1>
-  {{title}}
-</h1>
+<md-tab-group>
+    <md-tab label="Login">
+    	<div class="hold-form login">
+	    	<form #form="ngForm" (ngSubmit)="loginSubmit(form.value)">
+				<h2>{{loginTitle}}</h2>
+				<md-input-container>
+				 	<input mdInput type="email" placeholder="Email" name="email" ngModel required>
+				 	<!-- <md-hint *ngIf="formLogin.value" [ngStyle]="{'color': 'red'}" align="start">Email атата</md-hint> -->
+				</md-input-container>
+				<md-input-container>
+				 	<input mdInput type="password" placeholder="Password" name="password" ngModel required>
+				</md-input-container>
+				<div class="hold-button">
+					<button type="submit" md-raised-button>Login</button>
+				</div>
+			</form>
+		</div>
+    </md-tab>
+    <md-tab label="Registration">
+    	<div class="hold-form">
+	    	<form [formGroup]="formRegistration">
+				<h2>{{regTitle}}</h2>
+				<md-input-container>
+				 	<input mdInput type="email" placeholder="Email" formControlName="email" required>
+				 	<md-hint *ngIf="formRegistration.hasError('required','email')" [ngStyle]="{'color': 'red'}" align="start">Email не может быть пустым</md-hint>
+				 	<md-hint *ngIf="formRegistration.hasError('pattern','email')" [ngStyle]="{'color': 'red'}" align="end">Email должен содержать @ </md-hint>
+				</md-input-container>
+				<md-input-container>
+				 	<input mdInput type="password" placeholder="Password" passwordGroup="password">
+				</md-input-container>
+				<md-input-container>
+				 	<input mdInput type="password" placeholder="Confirm password" passwordGroup="pswconfirm">
+				 	<md-hint *ngIf="formRegistration.value" [ngStyle]="{'color': 'red'}" align="start">Email атата</md-hint>
+				</md-input-container>
+				<div class="hold-checkbox">
+					<md-slide-toggle>I Agree!</md-slide-toggle>
+				</div>
+				<div class="hold-button">
+					<button md-raised-button>Register</button>
+				</div>
+			</form>
+		</div>
+    </md-tab>
+</md-tab-group>
+
+
