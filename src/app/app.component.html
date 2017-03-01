@@ -8,10 +8,10 @@
 				 	<!-- <md-hint *ngIf="formLogin.value" [ngStyle]="{'color': 'red'}" align="start">Email атата</md-hint> -->
 				</md-input-container>
 				<md-input-container>
-				 	<input mdInput type="password" placeholder="Password" name="password" ngModel required>
+				 	<input mdInput type="password" placeholder="Password" name="password" ngModel required minlength="4">
 				</md-input-container>
 				<div class="hold-button">
-					<button type="submit" md-raised-button>Login</button>
+					<button type="submit" md-raised-button [disabled]="!form.valid">Login</button>
 				</div>
 			</form>
 		</div>
@@ -22,21 +22,22 @@
 				<h2>{{regTitle}}</h2>
 				<md-input-container>
 				 	<input mdInput type="email" placeholder="Email" formControlName="email" required>
-				 	<md-hint *ngIf="formRegistration.hasError('required','email')" [ngStyle]="{'color': 'red'}" align="start">Email не может быть пустым</md-hint>
-				 	<md-hint *ngIf="formRegistration.hasError('pattern','email')" [ngStyle]="{'color': 'red'}" align="end">Email должен содержать @ </md-hint>
+				 	<md-hint *ngIf="formRegistration.controls['email'].dirty && formRegistration.controls['email'].invalid" [ngStyle]="{'color': 'red'}" align="start">Не валидный Email</md-hint>
 				</md-input-container>
-				<md-input-container>
-				 	<input mdInput type="password" placeholder="Password" passwordGroup="password">
-				</md-input-container>
-				<md-input-container>
-				 	<input mdInput type="password" placeholder="Confirm password" passwordGroup="pswconfirm">
-				 	<md-hint *ngIf="formRegistration.value" [ngStyle]="{'color': 'red'}" align="start">Email атата</md-hint>
-				</md-input-container>
+				<div formGroupName="passwordGroup" class="pass-holder">
+					<md-input-container>
+					 	<input mdInput type="password" placeholder="Password" formControlName="password" required>
+					</md-input-container>
+					<md-input-container>
+					 	<input mdInput type="password" placeholder="Confirm password" formControlName="pswconfirm" required>
+					 	<md-hint class="hint" [ngStyle]="{'color': 'red'}" align="start">Пароли не совпадают</md-hint>
+					</md-input-container>
+				</div>
 				<div class="hold-checkbox">
-					<md-slide-toggle>I Agree!</md-slide-toggle>
+					<md-slide-toggle formControlName="agree" required>I Agree!</md-slide-toggle>
 				</div>
 				<div class="hold-button">
-					<button md-raised-button>Register</button>
+					<button md-raised-button [disabled]="!formRegistration.valid">Register</button>
 				</div>
 			</form>
 		</div>

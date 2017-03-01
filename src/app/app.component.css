@@ -45,6 +45,9 @@ h2 {
 	width: 50%;
 }
 
-input.ng-invalid {
-	
+.pass-holder.ng-valid .mat-hint{
+	display: none;
+}
+.pass-holder.ng-dirty.ng-invalid .mat-hint{
+	display: block;
 }
